@@ -15,6 +15,7 @@ public :
     };
     Node * root = nullptr;
     void buildtree();
+    int chartoint(char);
 };
 
 #endif // HUFFTREE_H
