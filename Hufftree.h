@@ -16,6 +16,9 @@ public :
     Node * root = nullptr;
     void buildtree();
     int chartoint(char);
+    bool swapNeeded(Node*, Node*);
+    void swap(Node* [], int, int);
+    void bubbleSort(Node* [], int);
 };
 
 #endif // HUFFTREE_H

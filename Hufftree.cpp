@@ -24,24 +24,47 @@ void Hufftree::buildtree()
         nodeArray[i] = newNode;
     }
 
-    //find lowest frequency Node
-    Node * lowest = nodeArray[0];
-    Node * nodePtr = nullptr;
+    bubbleSort(nodeArray, 30);
     for(int i = 0; i < 30; i++)
     {
-        nodePtr = nodeArray[i];
-        if(nodePtr->frequency < lowest->frequency)
-        {
-            lowest = nodePtr;
-        }
-        else if(nodePtr->frequency == lowest->frequency)
-        {
-
-        }
+        std::cout << nodeArray[i]->ch << " " << nodeArray[i]->frequency << std::endl;
     }
-    std::cout << "lowest: " << lowest->ch << std::endl;
 }
 
+bool Hufftree::swapNeeded(Node* first, Node* second)
+{
+    if(second->frequency > first->frequency) return true;
+    if(second->frequency == first->frequency)
+    {
+        int f, s;
+        f = chartoint(first->ch);
+        s = chartoint(second->ch);
+        if(s > f) return true;
+    }
+    return false;
+}
+
+void Hufftree::bubbleSort(Node* nodeArray[], int n)
+{
+    for(int i = 0; i < n-1; i++)
+    {
+        for(int j = n-1; j>i; j--)
+        {
+            if(swapNeeded(nodeArray[j], nodeArray[j-1]))
+            {
+                swap(nodeArray, j, j-1);
+            }
+        }
+    }
+}
+
+void Hufftree::swap(Node* nodeArray[], int first, int second)
+{
+    Node* tempPtr;
+    tempPtr = nodeArray[first];
+    nodeArray[first] = nodeArray[second];
+    nodeArray[second] = tempPtr;
+}
 
 //for sorting based on char
 int Hufftree::chartoint(char ch)
