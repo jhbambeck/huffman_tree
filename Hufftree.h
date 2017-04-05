@@ -19,6 +19,10 @@ public :
     bool swapNeeded(Node*, Node*);
     void swap(Node* [], int, int);
     void bubbleSort(Node* [], int);
+    void printPreRec(Node*);
+    void print()
+        { printPreRec(root); };
+
 };
 
 #endif // HUFFTREE_H

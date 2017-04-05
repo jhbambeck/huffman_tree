@@ -29,6 +29,54 @@ void Hufftree::buildtree()
     {
         std::cout << nodeArray[i]->ch << " " << nodeArray[i]->frequency << std::endl;
     }
+    std::cout << std::endl;
+
+    //build
+    Node* newNode;
+    int numNodes = 30;
+    while(numNodes > 1)
+    {
+        bubbleSort(nodeArray, numNodes);
+        /*
+        for(int i = 0; i < numNodes; i++)
+        {
+            std::cout << nodeArray[i]->frequency << " ";
+        }
+
+        std::cout << std::endl;
+        */
+        newNode = new Node;
+        newNode->ch = '$';
+        newNode->frequency = nodeArray[0]->frequency + nodeArray[1]->frequency;
+        newNode->left = nodeArray[0];
+        newNode->right = nodeArray[1];
+        nodeArray[0] = newNode;
+        for(int i = 1; i < numNodes - 1; i++)
+        {
+            nodeArray[i] = nodeArray[i+1];
+        }
+        root = newNode;
+        --numNodes;
+        /*
+        for(int i = 0; i < numNodes-1; i++)
+        {
+            std::cout << nodeArray[i]->ch;
+        }
+        std::cout << std::endl;
+        */
+    }
+
+}
+
+void Hufftree::printPreRec(Node* anyNode)
+{
+    if(anyNode == nullptr) std::cout << "/";
+    else
+    {
+        std::cout << anyNode->ch;
+        printPreRec(anyNode->left);
+        printPreRec(anyNode->right);
+    }
 }
 
 bool Hufftree::swapNeeded(Node* first, Node* second)
