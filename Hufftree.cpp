@@ -36,15 +36,7 @@ void Hufftree::buildtree()
     int numNodes = 30;
     while(numNodes > 1)
     {
-        bubbleSort(nodeArray, numNodes);
-        /*
-        for(int i = 0; i < numNodes; i++)
-        {
-            std::cout << nodeArray[i]->frequency << " ";
-        }
 
-        std::cout << std::endl;
-        */
         newNode = new Node;
         newNode->ch = '$';
         newNode->frequency = nodeArray[0]->frequency + nodeArray[1]->frequency;
@@ -57,6 +49,28 @@ void Hufftree::buildtree()
         }
         root = newNode;
         --numNodes;
+
+        int nodeIndex = 0;
+        for(int i = 1; i < numNodes; i++)
+        {
+            if(newNode->frequency > nodeArray[i]->frequency)
+            {
+                swap(nodeArray, nodeIndex, i);
+                nodeIndex++;
+            }
+            else if(newNode->frequency == nodeArray[i]->frequency)
+            {
+                int f, s;
+                f = chartoint(newNode->ch);
+                s = chartoint(nodeArray[i]->ch);
+                if(s >= f)
+                {
+                    swap(nodeArray, nodeIndex, i);
+                    nodeIndex++;
+                }
+            }
+        }
+
         /*
         for(int i = 0; i < numNodes-1; i++)
         {
