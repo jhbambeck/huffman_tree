@@ -63,7 +63,7 @@ void Hufftree::buildtree()
                 int f, s;
                 f = chartoint(newNode->ch);
                 s = chartoint(nodeArray[i]->ch);
-                if(s >= f)
+                if(s > f)
                 {
                     swap(nodeArray, nodeIndex, i);
                     nodeIndex++;
