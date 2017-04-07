@@ -14,3 +14,4 @@ void Bitcode::print()
         std::cout << pairArray[i].ch << " " << pairArray[i].bits << std::endl;
     }
 }
+

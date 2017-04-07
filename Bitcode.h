@@ -17,7 +17,6 @@ public:
 
     void input(char, std::string);
     void print();
-
 };
 
 #endif // BITCODE_H

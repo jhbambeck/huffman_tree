@@ -23,6 +23,8 @@ public :
     void printPreRec(Node*);
     void print()
         { printPreRec(root); };
+    void genBits();
+    void genBitsRec(Node*, std::string&, Bitcode&);
 
 };
 

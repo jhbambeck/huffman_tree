@@ -85,6 +85,31 @@ void Hufftree::buildtree()
 
 }
 
+void Hufftree::genBits()
+{
+    std::string currentBits = "";
+    Bitcode bit;
+    genBitsRec(root, currentBits, bit);
+    bit.print();
+}
+
+void Hufftree::genBitsRec(Node* anyNode, std::string& currentBits, Bitcode& bit)
+{
+    if(anyNode == nullptr);
+    else
+    {
+        if(anyNode->ch != '$')
+        {
+            bit.input(anyNode->ch, currentBits);
+        }
+        std::string currentCurr = currentBits;
+        currentBits.append("0");
+        genBitsRec(anyNode->left, currentBits, bit);
+        currentCurr.append("1");
+        genBitsRec(anyNode->right, currentCurr, bit);
+    }
+}
+
 void Hufftree::printPreRec(Node* anyNode)
 {
     if(anyNode == nullptr) std::cout << "/";
