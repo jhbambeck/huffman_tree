@@ -2,6 +2,7 @@
 #define HUFFTREE_H
 #include <iostream>
 #include <fstream>
+#include "Bitcode.h"
 
 class Hufftree
 {

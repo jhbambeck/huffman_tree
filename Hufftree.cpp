@@ -25,11 +25,14 @@ void Hufftree::buildtree()
     }
 
     bubbleSort(nodeArray, 30);
+
+    /*
     for(int i = 0; i < 30; i++)
     {
         std::cout << nodeArray[i]->ch << " " << nodeArray[i]->frequency << std::endl;
     }
     std::cout << std::endl;
+    */
 
     //build
     Node* newNode;
