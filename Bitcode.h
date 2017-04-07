@@ -1,6 +1,7 @@
 #ifndef BITCODE_H
 #define BITCODE_H
 #include <iostream>
+#include <fstream>
 #include <string>
 
 class Bitcode

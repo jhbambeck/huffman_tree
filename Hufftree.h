@@ -20,9 +20,8 @@ public :
     bool swapNeeded(Node*, Node*);
     void swap(Node* [], int, int);
     void bubbleSort(Node* [], int);
-    void printPreRec(Node*);
-    void print()
-        { printPreRec(root); };
+    void printPreRec(Node*, std::ofstream&);
+    void print();
     void genBits();
     void genBitsRec(Node*, std::string&, Bitcode&);
 

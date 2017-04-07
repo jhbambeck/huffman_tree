@@ -111,14 +111,21 @@ void Hufftree::genBitsRec(Node* anyNode, std::string& currentBits, Bitcode& bit)
     }
 }
 
-void Hufftree::printPreRec(Node* anyNode)
+void Hufftree::print()
 {
-    if(anyNode == nullptr) std::cout << "/";
+    std::ofstream tree;
+    tree.open("basic_tree");
+    printPreRec(root, tree);
+}
+
+void Hufftree::printPreRec(Node* anyNode, std::ofstream& tree)
+{
+    if(anyNode == nullptr) tree << "/";
     else
     {
-        std::cout << anyNode->ch;
-        printPreRec(anyNode->left);
-        printPreRec(anyNode->right);
+        tree << anyNode->ch;
+        printPreRec(anyNode->left, tree);
+        printPreRec(anyNode->right, tree);
     }
 }
 

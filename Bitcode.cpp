@@ -9,9 +9,11 @@ void Bitcode::input(char c, std::string b)
 
 void Bitcode::print()
 {
+    std::ofstream code;
+    code.open("basic_code");
     for(int i = 0; i < index; i++)
     {
-        std::cout << pairArray[i].ch << " " << pairArray[i].bits << std::endl;
+        code << pairArray[i].ch << " " << pairArray[i].bits << std::endl;
     }
 }
 
