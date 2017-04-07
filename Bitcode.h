@@ -17,6 +17,10 @@ public:
 
     void input(char, std::string);
     void print();
+    int chartoint(char);
+    bool swapNeeded(CodePair, CodePair);
+    void swap(int, int);
+    void bubbleSort();
 };
 
 #endif // BITCODE_H

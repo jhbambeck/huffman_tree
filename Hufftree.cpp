@@ -90,6 +90,7 @@ void Hufftree::genBits()
     std::string currentBits = "";
     Bitcode bit;
     genBitsRec(root, currentBits, bit);
+    bit.bubbleSort();
     bit.print();
 }
 
