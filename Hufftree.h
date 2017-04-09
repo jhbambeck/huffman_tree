@@ -15,14 +15,14 @@ public :
         Node * right = nullptr;
     };
     Node * root = nullptr;
-    void buildtree();
+    void buildtree(std::ifstream&);
     int chartoint(char);
     bool swapNeeded(Node*, Node*);
     void swap(Node* [], int, int);
     void bubbleSort(Node* [], int);
     void printPreRec(Node*, std::ofstream&);
-    void print();
-    void genBits();
+    void print(std::ofstream&);
+    void genBits(std::ofstream&);
     void genBitsRec(Node*, std::string&, Bitcode&);
 
 };

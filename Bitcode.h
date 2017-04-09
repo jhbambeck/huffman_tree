@@ -17,7 +17,7 @@ public:
     CodePair pairArray[30];
 
     void input(char, std::string);
-    void print();
+    void print(std::ofstream&);
     int chartoint(char);
     bool swapNeeded(CodePair, CodePair);
     void swap(int, int);

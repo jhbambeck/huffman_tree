@@ -1,15 +1,7 @@
 #include "Hufftree.h"
 
-void Hufftree::buildtree()
+void Hufftree::buildtree(std::ifstream& basic_freq)
 {
-    //open frequency file
-    std::fstream basic_freq;
-    basic_freq.open("basic_freq");
-    if(!basic_freq)
-    {
-        std::cout << "Cannot open frequency file";
-    }
-
     //create array of Nodes and populate
     Node* nodeArray[30];
     int freq = 0;
@@ -26,6 +18,26 @@ void Hufftree::buildtree()
 
     bubbleSort(nodeArray, 30);
 
+    //take out zero frequencies
+    int numElem = 30;
+    /*
+    bool cont = true;
+    while(cont)
+    {
+        if(nodeArray[0]->frequency == 0)
+        {
+            for(int i = 0; i < numElem - 1; i++)
+            {
+                nodeArray[i] = nodeArray[i + 1];
+            }
+            --numElem;
+        }
+        else
+        {
+            cont = false;
+        }
+    }
+    */
     /*
     for(int i = 0; i < 30; i++)
     {
@@ -36,7 +48,7 @@ void Hufftree::buildtree()
 
     //build
     Node* newNode;
-    int numNodes = 30;
+    int numNodes = numElem;
     while(numNodes > 1)
     {
 
@@ -85,13 +97,13 @@ void Hufftree::buildtree()
 
 }
 
-void Hufftree::genBits()
+void Hufftree::genBits(std::ofstream& code)
 {
     std::string currentBits = "";
     Bitcode bit;
     genBitsRec(root, currentBits, bit);
     bit.bubbleSort();
-    bit.print();
+    bit.print(code);
 }
 
 void Hufftree::genBitsRec(Node* anyNode, std::string& currentBits, Bitcode& bit)
@@ -111,10 +123,8 @@ void Hufftree::genBitsRec(Node* anyNode, std::string& currentBits, Bitcode& bit)
     }
 }
 
-void Hufftree::print()
+void Hufftree::print(std::ofstream& tree)
 {
-    std::ofstream tree;
-    tree.open("basic_tree");
     printPreRec(root, tree);
 }
 

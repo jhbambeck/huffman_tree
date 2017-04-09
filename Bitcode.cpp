@@ -7,10 +7,8 @@ void Bitcode::input(char c, std::string b)
     ++index;
 }
 
-void Bitcode::print()
+void Bitcode::print(std::ofstream& code)
 {
-    std::ofstream code;
-    code.open("basic_code");
     for(int i = 0; i < index; i++)
     {
         code << pairArray[i].ch << " " << pairArray[i].bits << std::endl;
