@@ -5,10 +5,12 @@
 
 Hufftree buildtree();
 
-int main()
+int main(int argc, char* argv[])
 {
+    if(argc != 2) std::cout << "Incorrect number of arguments";
     std::ofstream code("code");
-    std::ifstream freq("complex_freq");
+    std::ifstream freq(argv[1]);
+    if(!freq) std::cout << "Cannot open frequency file";
     std::ofstream tree("tree");
 
     Hufftree huff;
